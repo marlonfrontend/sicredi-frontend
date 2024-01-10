@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react'
 import type { Metadata } from 'next'
-
+import { AuthLayout } from '@/layouts'
 import { Inter } from 'next/font/google'
 import '../globals.css'
 
@@ -13,7 +13,9 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <AuthLayout>{children}</AuthLayout>
+      </body>
     </html>
   )
 }
