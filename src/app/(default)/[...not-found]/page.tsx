@@ -1,4 +1,4 @@
 const Page = () => {
-  return <div>sicredi</div>
+  return <div>error default</div>
 }
 export default Page
