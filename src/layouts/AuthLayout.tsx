@@ -2,13 +2,16 @@
 
 import { PropsWithChildren } from 'react'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
+import { AuthProvider } from '@/stores/Auth'
 
 export const AuthLayout = ({ children }: PropsWithChildren) => {
   return (
     <NextThemesProvider attribute="class" defaultTheme="light">
-      <main className="h-screen flex flex-col items-center justify-center">
-        {children}
-      </main>
+      <AuthProvider>
+        <main className="flex h-screen flex-col items-center justify-center">
+          {children}
+        </main>
+      </AuthProvider>
     </NextThemesProvider>
   )
 }

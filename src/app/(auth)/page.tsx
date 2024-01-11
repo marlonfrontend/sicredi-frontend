@@ -1,4 +1,4 @@
-import { AuthForm } from '@/components/common'
+import { AuthForm } from '@/components'
 
 import type { Metadata } from 'next'
 import Image from 'next/image'
