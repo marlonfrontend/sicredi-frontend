@@ -10,11 +10,11 @@ export const getDragonById = (id: string): Promise<DragonsType> => {
 }
 
 export const createDragon = ({ ...payload }: any): Promise<any> => {
-  return client.post(`/dragon`, { ...payload })
+  return client.post(`/dragon`, payload)
 }
 
-export const updateDragon = (id: string): Promise<any> => {
-  return client.patch(`/dragon/${id}`)
+export const updateDragon = ({ id, ...payload }: any): Promise<any> => {
+  return client.put(`/dragon/${id}`, payload)
 }
 
 export const deleteDragon = (id: string): Promise<any> => {

@@ -1,11 +1,13 @@
 'use client'
 
 import { createContext, useContext, PropsWithChildren, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { DragonProviderProps, DragonContextProps } from './Dragon.types'
 import {
   getDragons,
   getDragonById,
   createDragon,
+  updateDragon,
   deleteDragon,
 } from '@/services'
 import { DragonsType } from '@/types'
@@ -17,6 +19,7 @@ export const DragonContext = createContext<DragonContextProps>(
 export const DragonProvider = ({
   children,
 }: PropsWithChildren<DragonProviderProps>) => {
+  const router = useRouter()
   const [loadingDragons, setLoadingDragons] = useState(false)
   const [listDragons, setListDragons] = useState<DragonsType[]>([])
   const [dragon, setDragon] = useState<DragonsType>()
@@ -25,7 +28,10 @@ export const DragonProvider = ({
     setLoadingDragons(true)
     try {
       const data = await getDragons()
-      setListDragons(data)
+      const sortedDragons = [...data].sort((a, b) =>
+        a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }),
+      )
+      setListDragons(sortedDragons)
     } catch (error) {
       console.log(error)
     } finally {
@@ -45,15 +51,15 @@ export const DragonProvider = ({
   const handleCreateDragon = async (payload: any) => {
     try {
       await createDragon(payload)
-      console.log(payload, 'tentando criar')
+      router.push('/dragons')
     } catch (error) {
       console.log(error)
     }
   }
 
-  const handleUpdateDragon = (e: any) => {
+  const handleUpdateDragon = async (payload: any) => {
     try {
-      console.log(e, 'e')
+      await updateDragon(payload)
     } catch (error) {
       console.log(error)
     }
