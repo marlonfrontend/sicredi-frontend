@@ -11,7 +11,7 @@ export const DefaultLayout = ({ children }: PropsWithChildren) => {
       <AuthProvider>
         <DragonProvider>
           <Header />
-          <main>{children}</main>
+          <main className="py-10">{children}</main>
         </DragonProvider>
       </AuthProvider>
     </NextThemesProvider>
