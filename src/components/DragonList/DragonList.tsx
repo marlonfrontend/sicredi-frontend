@@ -1,6 +1,6 @@
 'use client'
 
-import { DragonCard, Grid, LoadingList } from '@/components'
+import { DragonCard, Grid, GridItem, LoadingList } from '@/components'
 import { useDragon } from '@/stores'
 import { useEffect } from 'react'
 
@@ -18,14 +18,15 @@ export const DragonList = () => {
   return (
     <Grid gap={5}>
       {listDragons?.map((item) => (
-        <DragonCard
-          key={item.id}
-          id={item.id}
-          name={item.name}
-          type={item.type}
-          createdAt={item.createdAt}
-          onDelete={() => handleDeleteDragon(item.id)}
-        />
+        <GridItem col={12} key={item.id}>
+          <DragonCard
+            id={item.id}
+            name={item.name}
+            type={item.type}
+            createdAt={item.createdAt}
+            onDelete={() => handleDeleteDragon(item.id)}
+          />
+        </GridItem>
       ))}
     </Grid>
   )

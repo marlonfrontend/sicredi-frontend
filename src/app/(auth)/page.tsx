@@ -16,6 +16,7 @@ const Page = () => {
         height={100}
         alt="Sicredi"
         className="mb-5"
+        priority
       />
       <AuthForm />
     </>

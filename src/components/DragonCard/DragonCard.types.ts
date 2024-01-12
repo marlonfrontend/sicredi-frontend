@@ -1,8 +1,5 @@
-export type DragonCardProps = {
-  id: string
-  name: string
-  type: string
-  createdAt: string | Date
+import { DragonsType } from '@/types'
 
+export type DragonCardProps = Omit<DragonsType, 'histories'> & {
   onDelete?: (id: string) => void
 }

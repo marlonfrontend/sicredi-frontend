@@ -1,10 +1,10 @@
 import { InputProps } from './Input.types'
-import { inputStyles } from './Input.styles'
+import { InputStyle } from './Input.styles'
 import { forwardRef } from 'react'
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ onChange, value, ...props }, ref) => {
-    const { base, input, label } = inputStyles()
+  ({ onChange, value, errors, ...props }, ref) => {
+    const { base, input, label, error } = InputStyle()
 
     return (
       <div className={base()}>
@@ -16,6 +16,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           onChange={onChange}
           {...props}
         />
+        {errors && <div className={error()}>{errors}</div>}
       </div>
     )
   },

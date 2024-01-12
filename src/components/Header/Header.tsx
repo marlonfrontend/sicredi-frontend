@@ -11,11 +11,19 @@ export const Header = () => {
   return (
     <header className={HeaderStyle()}>
       <Container>
-        <Grid justify="between">
+        <Grid justify="between" align="center">
           <Link href="/">
-            <Image src="/img/logo.svg" width={120} height={80} alt="Sicredi" />
+            <Image
+              src="/img/logo.svg"
+              priority
+              width={120}
+              height={80}
+              alt="Sicredi"
+            />
           </Link>
-          <Button onClick={signOut}>Sair</Button>
+          <Button color="secondary" onClick={signOut}>
+            Sair
+          </Button>
         </Grid>
       </Container>
     </header>

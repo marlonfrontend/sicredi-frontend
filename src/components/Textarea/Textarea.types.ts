@@ -5,5 +5,6 @@ export type TextareaProps = {
   type?: string
   name?: string
   value?: string
+  errors?: string
   onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void
 }

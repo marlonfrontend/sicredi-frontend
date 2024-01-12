@@ -3,6 +3,7 @@
 import {
   Card,
   Grid,
+  GridItem,
   Dropdown,
   DropdownContent,
   DropdownItem,
@@ -40,18 +41,20 @@ export const DragonCard = ({
   return (
     <Card>
       <Grid justify="between" align="center">
-        <div className="w-1/4">
+        <GridItem col={3}>
           <small className="uppercase text-black/40">Nome</small>
           <div>{name}</div>
-        </div>
-        <div className="w-1/4">
+        </GridItem>
+        <GridItem col={3}>
           <small className="uppercase text-black/40">Tipo</small>
           <div>{type}</div>
-        </div>
-        <div className="w-1/4">
+        </GridItem>
+        <GridItem col={3}>
           <small className="uppercase text-black/40">Criado em</small>
-          <div>{formatDate(createdAt)}</div>
-        </div>
+          <div>
+            {createdAt ? <>{formatDate(createdAt)}</> : <>Não informado</>}
+          </div>
+        </GridItem>
         <Dropdown
           trigger={
             <button className="rounded-full border p-2">
@@ -73,7 +76,9 @@ export const DragonCard = ({
 
       <ModalConfirm
         isOpen={isConfirmDelete}
-        onConfirm={handleDelete}
+        onClose={handleCloseModal}
+        onConfirm={() => handleDelete(id)}
+        maxWidth={380}
         content={
           <>
             Tem certeza que deseja excluir <strong>{name}</strong>?
