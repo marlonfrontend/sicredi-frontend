@@ -2,6 +2,9 @@
 
 import { PropsWithChildren, useState } from 'react'
 import { DropdownProps } from './Dropdown.types'
+import { DropdownStyle } from './Dropdown.styles'
+
+const { base, content, item } = DropdownStyle()
 
 export const Dropdown = ({
   children,
@@ -12,28 +15,21 @@ export const Dropdown = ({
   const toggleDropdown = () => setIsOpen(!isOpen)
 
   return (
-    <div className="relative">
+    <div className={base()}>
       <div onClick={toggleDropdown}>{trigger}</div>
 
-      {isOpen && (
-        <div className="absolute z-20 rounded-md bg-white shadow">
-          {children}
-        </div>
-      )}
+      {isOpen && <>{children}</>}
     </div>
   )
 }
 
 export const DropdownContent = ({ children }: PropsWithChildren) => {
-  return <div className="flex min-w-[150px] flex-col py-2">{children}</div>
+  return <div className={content()}>{children}</div>
 }
 
 export const DropdownItem = ({ onClick, children }: PropsWithChildren<any>) => {
   return (
-    <button
-      onClick={onClick}
-      className="w-full cursor-pointer px-4 py-2 text-left hover:bg-gray-100"
-    >
+    <button onClick={onClick} className={item()}>
       {children}
     </button>
   )
