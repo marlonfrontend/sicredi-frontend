@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation'
 import { useEffect } from 'react'
 
 const Page = () => {
-  const { dragon, fetchDragonById, updateDragon } = useDragon()
+  const { dragon, fetchDragonById, handleUpdateDragon } = useDragon()
 
   const params = useParams() as { id: string }
 
@@ -19,7 +19,7 @@ const Page = () => {
     <Container>
       <Heading backButton title={`Editar ${dragon ? dragon.name : ''}`} />
       <Card>
-        <DragonForm onSubmit={updateDragon} initialValues={dragon} />
+        <DragonForm onSubmit={handleUpdateDragon} initialValues={dragon} />
       </Card>
     </Container>
   )
