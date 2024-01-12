@@ -17,14 +17,14 @@ export const AuthProvider = ({
 
   const signIn: AuthContextProps['signIn'] = (value) => {
     try {
-      if (value.email === 'teste@gmail.com' && value.password === '1234') {
+      if (value.email === 'teste@sicredi.com' && value.password === '1234') {
         Cookies.set('token', '1234')
         router.push('/dragons')
       } else {
         throw new Error()
       }
     } catch (error) {
-      toast.error('email: teste@gmail.com, senha: 1234', {
+      toast.error('email: teste@sicredi.com, senha: 1234', {
         position: toast.POSITION.BOTTOM_RIGHT,
       })
     }
