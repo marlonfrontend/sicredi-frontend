@@ -1,9 +1,19 @@
 'use client'
 
-import { Button, Card, Grid, Modal } from '@/components'
+import {
+  Button,
+  Card,
+  Dropdown,
+  DropdownContent,
+  DropdownItem,
+  Grid,
+  Modal,
+  MoreVerticalIcon,
+} from '@/components'
 import { DragonCardProps } from './DragonCard.types'
 import { formatDate } from '@/utils/formatters'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export const DragonCard = ({
   id,
@@ -12,6 +22,7 @@ export const DragonCard = ({
   onDelete,
   createdAt,
 }: DragonCardProps) => {
+  const router = useRouter()
   const [isModalOpen, setModalOpen] = useState(false)
 
   const handleOpenModal = () => {
@@ -29,7 +40,7 @@ export const DragonCard = ({
 
   return (
     <Card>
-      <div className="flex justify-between">
+      <div className="flex items-center justify-between">
         <div className="w-1/4">
           <small className="uppercase text-black/40">Nome</small>
           <div>{name}</div>
@@ -42,13 +53,23 @@ export const DragonCard = ({
           <small className="uppercase text-black/40">Criado em</small>
           <div>{formatDate(createdAt)}</div>
         </div>
-        <div className="w-1/4">
-          <div className="flex items-center gap-3">
-            <a href={`/dragons/${id}`}>Detalhes</a>
-            <a href={`/dragons/${id}/edit`}>Editar</a>
-            <button onClick={handleOpenModal}>Deletar</button>
-          </div>
-        </div>
+        <Dropdown
+          trigger={
+            <button className="rounded-full border p-2">
+              <MoreVerticalIcon />
+            </button>
+          }
+        >
+          <DropdownContent>
+            <DropdownItem onClick={() => router.push(`/dragons/${id}`)}>
+              Detalhes
+            </DropdownItem>
+            <DropdownItem onClick={() => router.push(`/dragons/${id}/edit`)}>
+              Editar
+            </DropdownItem>
+            <DropdownItem onClick={handleOpenModal}>Deletar</DropdownItem>
+          </DropdownContent>
+        </Dropdown>
       </div>
 
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
