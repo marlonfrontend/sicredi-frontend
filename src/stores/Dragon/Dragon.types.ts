@@ -1,7 +1,7 @@
 import { DragonsType } from '@/types'
 
 export type DragonContextProps = {
-  // loading: boolean
+  loadingDragons: boolean
   listDragons?: DragonsType[]
   dragon?: DragonsType
 

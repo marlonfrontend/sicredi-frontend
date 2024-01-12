@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Card, Container, Form, Input } from '@/components'
+import { Card, Container, DragonForm, Heading } from '@/components'
 import { useDragon } from '@/stores'
 import { useParams } from 'next/navigation'
 import { useEffect } from 'react'
@@ -17,12 +17,9 @@ const Page = () => {
 
   return (
     <Container>
+      <Heading backButton title={`Editar ${dragon ? dragon.name : ''}`} />
       <Card>
-        <Form onSubmit={updateDragon} initialValues={dragon}>
-          <Input name="name" />
-          <Input name="createdAt" />
-          <Button type="submit">Salvar</Button>
-        </Form>
+        <DragonForm onSubmit={updateDragon} initialValues={dragon} />
       </Card>
     </Container>
   )

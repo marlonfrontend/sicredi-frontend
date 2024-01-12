@@ -10,7 +10,13 @@ export const metadata: Metadata = {
 const Page = () => {
   return (
     <>
-      <Image src="/img/logo.svg" width={200} height={100} alt="Sicredi" />
+      <Image
+        src="/img/logo.svg"
+        width={200}
+        height={100}
+        alt="Sicredi"
+        className="mb-5"
+      />
       <AuthForm />
     </>
   )

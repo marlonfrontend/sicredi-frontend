@@ -12,15 +12,19 @@ export const DragonContext = createContext<DragonContextProps>(
 export const DragonProvider = ({
   children,
 }: PropsWithChildren<DragonProviderProps>) => {
+  const [loadingDragons, setLoadingDragons] = useState(false)
   const [listDragons, setListDragons] = useState<DragonsType[]>([])
   const [dragon, setDragon] = useState<DragonsType>()
 
   const fetchDragons = async () => {
+    setLoadingDragons(true)
     try {
       const data = await getDragons()
       setListDragons(data)
     } catch (error) {
       console.log(error)
+    } finally {
+      setLoadingDragons(false)
     }
   }
 
@@ -59,6 +63,7 @@ export const DragonProvider = ({
   return (
     <DragonContext.Provider
       value={{
+        loadingDragons,
         fetchDragons,
         listDragons,
         fetchDragonById,
