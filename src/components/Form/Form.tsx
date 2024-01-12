@@ -1,18 +1,8 @@
 'use client'
 
-import React, {
-  ReactNode,
-  FormEvent,
-  useState,
-  ChangeEvent,
-  useEffect,
-} from 'react'
+import React, { FormEvent, useState, ChangeEvent, useEffect } from 'react'
 
-type FormProps<T> = {
-  onSubmit: (data: T) => void
-  children: ReactNode
-  initialValues?: Record<string, any>
-}
+import { FormProps } from './Form.types'
 
 type InputProps = {
   name: string
@@ -24,6 +14,7 @@ export const Form = <T extends Record<string, any>>({
   onSubmit,
   children,
   initialValues,
+  classNames,
 }: FormProps<T>) => {
   const [formData, setFormData] = useState<T>(initialValues as T)
 
@@ -45,7 +36,7 @@ export const Form = <T extends Record<string, any>>({
   }, [initialValues])
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={classNames} onSubmit={handleSubmit}>
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child)) {
           const { name } = child.props as InputProps

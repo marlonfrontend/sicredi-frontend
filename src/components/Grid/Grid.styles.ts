@@ -13,9 +13,16 @@ export const GridStyle = tv({
     justify: {
       start: 'justify-start',
       center: 'justify-center',
-      end: 'justify-start',
+      end: 'justify-end',
       between: 'justify-between',
     },
+    align: {
+      start: 'items-start',
+      center: 'items-center',
+      end: 'items-end',
+    },
+    col: {
+      true: 'flex-col',
+    },
   },
-  defaultVariants: {},
 })

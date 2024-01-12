@@ -20,6 +20,7 @@ const Page = () => {
       <Card>
         <Form onSubmit={updateDragon} initialValues={dragon}>
           <Input name="name" />
+          <Input name="createdAt" />
           <Button type="submit">Salvar</Button>
         </Form>
       </Card>

@@ -5,7 +5,7 @@ import { useDragon } from '@/stores'
 import { useEffect } from 'react'
 
 export const DragonList = () => {
-  const { listDragons, fetchDragons } = useDragon()
+  const { listDragons, fetchDragons, deleteDragon } = useDragon()
 
   useEffect(() => {
     fetchDragons()
@@ -21,6 +21,7 @@ export const DragonList = () => {
           name={item.name}
           type={item.type}
           createdAt={item.createdAt}
+          onDelete={() => deleteDragon(item.id)}
         />
       ))}
     </Grid>

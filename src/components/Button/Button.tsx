@@ -5,10 +5,11 @@ import { ButtonStyle } from './Button.styles'
 export const Button = ({
   type = 'button',
   children,
+  onClick,
   ...props
 }: PropsWithChildren<ButtonProps>) => {
   return (
-    <button type={type} className={ButtonStyle({ ...props })}>
+    <button onClick={onClick} type={type} className={ButtonStyle({ ...props })}>
       {children}
     </button>
   )

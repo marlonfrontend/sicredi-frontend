@@ -1,7 +1,8 @@
 import { ReactNode } from 'react'
 
 export type HeadingProps = {
-  title: string
+  title?: string
   description?: string
   endContent?: ReactNode
+  backButton?: boolean
 }

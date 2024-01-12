@@ -1,4 +1,4 @@
-import { client } from './request'
+import { client } from './client'
 import { DragonsType } from '@/types'
 
 export const getDragons = (): Promise<DragonsType[]> => {

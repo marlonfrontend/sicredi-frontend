@@ -1,7 +1,8 @@
 'use client'
 
-import { Container } from '@/components'
+import { Card, Container, Grid, Heading } from '@/components'
 import { useDragon } from '@/stores'
+import { formatDate } from '@/utils/formatters'
 import { useParams } from 'next/navigation'
 import { useEffect } from 'react'
 
@@ -17,8 +18,22 @@ const Page = () => {
 
   return (
     <Container>
-      <div>listing {params.id}</div>
-      {JSON.stringify(dragon)}
+      <Heading backButton title={dragon?.name} />
+      <Card>
+        <Grid gap={3} col>
+          <div>
+            <small>Historia</small>
+            <div>{dragon?.histories}</div>
+          </div>
+          <div>
+            <small>Tipo</small>
+            <div>{dragon?.type}</div>
+          </div>
+        </Grid>
+        {dragon?.createdAt && (
+          <small>Criado em: {formatDate(dragon.createdAt)}</small>
+        )}
+      </Card>
     </Container>
   )
 }

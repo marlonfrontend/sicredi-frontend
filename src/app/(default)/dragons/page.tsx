@@ -1,11 +1,21 @@
+'use client'
 import { Button, DragonList, Container, Heading } from '@/components'
+import { useRouter } from 'next/navigation'
+import { useDragon } from '@/stores'
 
 const Page = () => {
+  const router = useRouter()
+  const { listDragons } = useDragon()
+
   return (
     <Container>
       <Heading
-        title="Resultado (10)"
-        endContent={<Button size="lg">Adicionar Dragão</Button>}
+        title={`Resultado (${listDragons?.length})`}
+        endContent={
+          <Button onClick={() => router.push('/dragons/create')} size="lg">
+            Adicionar Dragão
+          </Button>
+        }
       />
       <DragonList />
     </Container>

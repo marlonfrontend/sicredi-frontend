@@ -3,4 +3,5 @@ export type ButtonProps = {
   type?: 'button' | 'submit' | 'reset'
   color?: 'primary' | 'secondary'
   block?: boolean
+  onClick?: () => void
 }
