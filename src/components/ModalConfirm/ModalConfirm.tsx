@@ -1,3 +1,4 @@
+'use client'
 import { Modal, Grid, Button } from '@/components'
 
 export const ModalConfirm = ({ isOpen, onClose, onConfirm, content }: any) => {

@@ -73,6 +73,7 @@ export const DragonCard = ({
 
       <ModalConfirm
         isOpen={isConfirmDelete}
+        onClose={handleCloseModal}
         onConfirm={handleDelete}
         content={
           <>
