@@ -2,7 +2,12 @@
 
 import { createContext, useContext, PropsWithChildren, useState } from 'react'
 import { DragonProviderProps, DragonContextProps } from './Dragon.types'
-import { getDragons, getDragonById } from '@/services'
+import {
+  getDragons,
+  getDragonById,
+  createDragon,
+  deleteDragon,
+} from '@/services'
 import { DragonsType } from '@/types'
 
 export const DragonContext = createContext<DragonContextProps>(
@@ -37,14 +42,16 @@ export const DragonProvider = ({
     }
   }
 
-  const createDragon = () => {
+  const handleCreateDragon = async (payload: any) => {
     try {
+      await createDragon(payload)
+      console.log(payload, 'tentando criar')
     } catch (error) {
       console.log(error)
     }
   }
 
-  const updateDragon = (e: any) => {
+  const handleUpdateDragon = (e: any) => {
     try {
       console.log(e, 'e')
     } catch (error) {
@@ -52,9 +59,10 @@ export const DragonProvider = ({
     }
   }
 
-  const deleteDragon = () => {
+  const handleDeleteDragon = async (id: string) => {
     try {
-      console.log('deleta aqui')
+      await deleteDragon(id)
+      console.log(id, 'deleta aqui')
     } catch (error) {
       console.log(error)
     }
@@ -68,9 +76,9 @@ export const DragonProvider = ({
         listDragons,
         fetchDragonById,
         dragon,
-        createDragon,
-        updateDragon,
-        deleteDragon,
+        handleCreateDragon,
+        handleUpdateDragon,
+        handleDeleteDragon,
       }}
     >
       {children}

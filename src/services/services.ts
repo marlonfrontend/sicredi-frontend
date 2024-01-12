@@ -9,8 +9,8 @@ export const getDragonById = (id: string): Promise<DragonsType> => {
   return client.get(`/dragon/${id}`)
 }
 
-export const createDragon = ({}: any): Promise<any> => {
-  return client.post(`/dragon`)
+export const createDragon = ({ ...payload }: any): Promise<any> => {
+  return client.post(`/dragon`, { ...payload })
 }
 
 export const updateDragon = (id: string): Promise<any> => {
