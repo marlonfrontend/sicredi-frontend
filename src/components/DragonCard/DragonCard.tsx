@@ -1,13 +1,12 @@
 'use client'
 
 import {
-  Button,
   Card,
+  Grid,
   Dropdown,
   DropdownContent,
   DropdownItem,
-  Grid,
-  Modal,
+  ModalConfirm,
   MoreVerticalIcon,
 } from '@/components'
 import { DragonCardProps } from './DragonCard.types'
@@ -23,14 +22,14 @@ export const DragonCard = ({
   createdAt,
 }: DragonCardProps) => {
   const router = useRouter()
-  const [isModalOpen, setModalOpen] = useState(false)
+  const [isConfirmDelete, setConfirmDelete] = useState(false)
 
   const handleOpenModal = () => {
-    setModalOpen(true)
+    setConfirmDelete(true)
   }
 
   const handleCloseModal = () => {
-    setModalOpen(false)
+    setConfirmDelete(false)
   }
 
   const handleDelete = (id: string) => {
@@ -40,7 +39,7 @@ export const DragonCard = ({
 
   return (
     <Card>
-      <div className="flex items-center justify-between">
+      <Grid justify="between" align="center">
         <div className="w-1/4">
           <small className="uppercase text-black/40">Nome</small>
           <div>{name}</div>
@@ -70,21 +69,17 @@ export const DragonCard = ({
             <DropdownItem onClick={handleOpenModal}>Deletar</DropdownItem>
           </DropdownContent>
         </Dropdown>
-      </div>
+      </Grid>
 
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <h3 className="mb-5">
-          Tem certeza que deseja excluir <strong>{name}</strong>?
-        </h3>
-        <Grid align="center" gap={3}>
-          <Button color="secondary" size="sm" onClick={handleCloseModal}>
-            Não
-          </Button>
-          <Button size="sm" onClick={() => handleDelete(id)}>
-            Sim
-          </Button>
-        </Grid>
-      </Modal>
+      <ModalConfirm
+        isOpen={isConfirmDelete}
+        onConfirm={handleDelete}
+        content={
+          <>
+            Tem certeza que deseja excluir <strong>{name}</strong>?
+          </>
+        }
+      />
     </Card>
   )
 }
