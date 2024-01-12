@@ -4,14 +4,38 @@ import { PropsWithChildren } from 'react'
 import { Header } from '@/components'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { AuthProvider, DragonProvider } from '@/stores'
+import { motion, AnimatePresence } from 'framer-motion'
+import { usePathname } from 'next/navigation'
 
 export const DefaultLayout = ({ children }: PropsWithChildren) => {
+  const router = usePathname()
+
   return (
     <NextThemesProvider attribute="class" defaultTheme="light">
       <AuthProvider>
         <DragonProvider>
-          <Header />
-          <main className="py-10">{children}</main>
+          <AnimatePresence mode="wait">
+            <Header />
+            <motion.main
+              key={router}
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {
+                  opacity: 0,
+                },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    delay: 0.3,
+                  },
+                },
+              }}
+              className="py-10"
+            >
+              {children}
+            </motion.main>
+          </AnimatePresence>
         </DragonProvider>
       </AuthProvider>
     </NextThemesProvider>
