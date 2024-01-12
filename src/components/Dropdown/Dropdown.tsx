@@ -1,8 +1,6 @@
 'use client'
 
-import { PropsWithChildren, useState, useRef, useEffect } from 'react'
-import { Portal } from '@/components'
-import { createPortal } from 'react-dom'
+import { PropsWithChildren, useState } from 'react'
 import { DropdownProps } from './Dropdown.types'
 
 export const Dropdown = ({
@@ -10,46 +8,18 @@ export const Dropdown = ({
   trigger,
 }: PropsWithChildren<DropdownProps>) => {
   const [isOpen, setIsOpen] = useState(false)
-  const triggerRef = useRef<HTMLDivElement | null>(null)
 
   const toggleDropdown = () => setIsOpen(!isOpen)
-  const closeDropdown = () => setIsOpen(false)
-
-  const handleOutsideClick = (event: MouseEvent) => {
-    const dropdownNode = triggerRef.current
-
-    if (
-      isOpen &&
-      dropdownNode &&
-      !dropdownNode.contains(event.target as Node)
-    ) {
-      closeDropdown()
-    }
-  }
-
-  useEffect(() => {
-    if (isOpen) {
-      document.addEventListener('click', handleOutsideClick)
-      return () => document.removeEventListener('click', handleOutsideClick)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen])
-
-  const triggerRect = triggerRef.current?.getBoundingClientRect() || null
 
   return (
-    <div className="group relative z-[9]">
-      <div onClick={toggleDropdown} ref={triggerRef}>
-        {trigger}
-      </div>
+    <div className="relative">
+      <div onClick={toggleDropdown}>{trigger}</div>
 
-      {isOpen &&
-        createPortal(
-          <Portal trigger={triggerRect}>
-            <div className="rounded-md bg-white shadow">{children}</div>
-          </Portal>,
-          document.body,
-        )}
+      {isOpen && (
+        <div className="absolute z-20 rounded-md bg-white shadow">
+          {children}
+        </div>
+      )}
     </div>
   )
 }
