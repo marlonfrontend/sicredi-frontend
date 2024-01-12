@@ -6,6 +6,8 @@ import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { AuthProvider, DragonProvider } from '@/stores'
 import { motion, AnimatePresence } from 'framer-motion'
 import { usePathname } from 'next/navigation'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export const DefaultLayout = ({ children }: PropsWithChildren) => {
   const router = usePathname()
@@ -14,7 +16,7 @@ export const DefaultLayout = ({ children }: PropsWithChildren) => {
     <NextThemesProvider attribute="class" defaultTheme="light">
       <AuthProvider>
         <DragonProvider>
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             <Header />
             <motion.main
               key={router}
@@ -27,7 +29,7 @@ export const DefaultLayout = ({ children }: PropsWithChildren) => {
                 visible: {
                   opacity: 1,
                   transition: {
-                    delay: 0.3,
+                    delay: 0.2,
                   },
                 },
               }}
@@ -36,6 +38,7 @@ export const DefaultLayout = ({ children }: PropsWithChildren) => {
               {children}
             </motion.main>
           </AnimatePresence>
+          <ToastContainer />
         </DragonProvider>
       </AuthProvider>
     </NextThemesProvider>

@@ -10,7 +10,9 @@ import {
   updateDragon,
   deleteDragon,
 } from '@/services'
+
 import { DragonsType } from '@/types'
+import { toast } from 'react-toastify'
 
 export const DragonContext = createContext<DragonContextProps>(
   {} as DragonContextProps,
@@ -33,7 +35,9 @@ export const DragonProvider = ({
       )
       setListDragons(sortedDragons)
     } catch (error) {
-      console.log(error)
+      toast.error('Não foi possível carregar dragões', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      })
     } finally {
       setLoadingDragons(false)
     }
@@ -44,33 +48,52 @@ export const DragonProvider = ({
       const data = await getDragonById(id)
       setDragon(data)
     } catch (error) {
-      console.log(error)
+      toast.error('Erro ao carregar informações', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      })
     }
   }
 
-  const handleCreateDragon = async (payload: any) => {
+  const handleCreateDragon: DragonContextProps['handleCreateDragon'] = async (
+    payload,
+  ) => {
     try {
       await createDragon(payload)
       router.push('/dragons')
+      toast.success('Criação realizada com sucesso!', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      })
     } catch (error) {
-      console.log(error)
+      toast.error('Erro ao tentar criar', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      })
     }
   }
 
-  const handleUpdateDragon = async (payload: any) => {
+  const handleUpdateDragon: DragonContextProps['handleUpdateDragon'] = async (
+    id,
+    payload,
+  ) => {
     try {
-      await updateDragon(payload)
+      await updateDragon(id, payload)
+      toast.success('Edição concluída com sucesso!', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      })
     } catch (error) {
-      console.log(error)
+      toast.error('Erro ao tentar atualizar', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      })
     }
   }
 
   const handleDeleteDragon = async (id: string) => {
     try {
       await deleteDragon(id)
-      console.log(id, 'deleta aqui')
+      fetchDragons()
     } catch (error) {
-      console.log(error)
+      toast.error('Erro ao tentar deletar', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      })
     }
   }
 

@@ -4,8 +4,8 @@ import Link from 'next/link'
 const Page = () => {
   return (
     <Container>
-      <Grid col gap={5} align="center">
-        <span className="text-4xl font-bold text-primary">
+      <Grid direction="column" gap={5} align="center">
+        <span className="flex-col text-4xl font-bold text-primary">
           Página não encontrada
         </span>
         <Link href="/dragons" className="inline-block hover:underline">

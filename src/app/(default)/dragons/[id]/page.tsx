@@ -1,6 +1,6 @@
 'use client'
 
-import { Card, Container, Grid, Heading } from '@/components'
+import { Card, Container, Grid, GridItem, Heading } from '@/components'
 import { useDragon } from '@/stores'
 import { formatDate } from '@/utils/formatters'
 import { useParams } from 'next/navigation'
@@ -20,15 +20,15 @@ const Page = () => {
     <Container>
       <Heading backButton title={dragon?.name} />
       <Card>
-        <Grid gap={3} col>
-          <div>
+        <Grid gap={3} direction="column">
+          <GridItem>
             <small>Historia</small>
             <div>{dragon?.histories}</div>
-          </div>
-          <div>
+          </GridItem>
+          <GridItem>
             <small>Tipo</small>
             <div>{dragon?.type}</div>
-          </div>
+          </GridItem>
         </Grid>
         {dragon?.createdAt && (
           <small>Criado em: {formatDate(dragon.createdAt)}</small>

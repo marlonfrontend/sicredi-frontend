@@ -1,4 +1,5 @@
 export type ModalProps = {
   isOpen: boolean
-  onClose: () => void
+  maxWidth?: number
+  onClose?: () => void
 }

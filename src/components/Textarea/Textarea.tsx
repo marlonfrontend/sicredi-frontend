@@ -3,8 +3,8 @@ import { TextareaStyle } from './Textarea.styles'
 import { forwardRef } from 'react'
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ onChange, value, ...props }, ref) => {
-    const { base, input, label } = TextareaStyle()
+  ({ onChange, value, errors, ...props }, ref) => {
+    const { base, textarea, label, error } = TextareaStyle()
 
     return (
       <div className={base()}>
@@ -12,10 +12,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         <textarea
           ref={ref}
           defaultValue={value}
-          className={input()}
+          className={textarea()}
           onChange={onChange}
           {...props}
         />
+        {errors && <div className={error()}>{errors}</div>}
       </div>
     )
   },

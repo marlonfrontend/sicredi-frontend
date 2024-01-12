@@ -4,6 +4,7 @@ import { PropsWithChildren } from 'react'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { AuthProvider } from '@/stores/Auth'
 import { motion } from 'framer-motion'
+import { ToastContainer } from 'react-toastify'
 
 export const AuthLayout = ({ children }: PropsWithChildren) => {
   return (
@@ -27,6 +28,7 @@ export const AuthLayout = ({ children }: PropsWithChildren) => {
         >
           {children}
         </motion.main>
+        <ToastContainer />
       </AuthProvider>
     </NextThemesProvider>
   )

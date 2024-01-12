@@ -1,9 +1,10 @@
 'use client'
 
 import { Card, Container, DragonForm, Heading } from '@/components'
-import { useDragon } from '@/stores'
 import { useParams } from 'next/navigation'
 import { useEffect } from 'react'
+import { useDragon } from '@/stores'
+import { UpdateDragonTypeSchema } from '@/types'
 
 const Page = () => {
   const { dragon, fetchDragonById, handleUpdateDragon } = useDragon()
@@ -19,7 +20,11 @@ const Page = () => {
     <Container>
       <Heading backButton title={`Editar ${dragon ? dragon.name : ''}`} />
       <Card>
-        <DragonForm onSubmit={handleUpdateDragon} initialValues={dragon} />
+        <DragonForm
+          schema={UpdateDragonTypeSchema}
+          onSubmit={(payload) => handleUpdateDragon(params.id, payload)}
+          initialValues={dragon}
+        />
       </Card>
     </Container>
   )

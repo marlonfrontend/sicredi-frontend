@@ -4,6 +4,7 @@ import Cookies from 'js-cookie'
 import { createContext, useContext, PropsWithChildren } from 'react'
 import { AuthProviderProps, AuthContextProps } from './Auth.types'
 import { useRouter } from 'next/navigation'
+import { toast } from 'react-toastify'
 
 export const AuthContext = createContext<AuthContextProps>(
   {} as AuthContextProps,
@@ -23,12 +24,13 @@ export const AuthProvider = ({
         throw new Error()
       }
     } catch (error) {
-      console.log(error)
+      toast.error('email: teste@gmail.com, senha: 1234', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      })
     }
   }
 
   const signOut: AuthContextProps['signOut'] = () => {
-    console.log('saiu')
     Cookies.set('token', '')
     router.push('/')
   }

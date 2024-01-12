@@ -1,4 +1,5 @@
 import { DragonsType } from '@/types'
+import { CreateDragonType, UpdateDragonType } from '@/types'
 
 export type DragonContextProps = {
   loadingDragons: boolean
@@ -8,9 +9,9 @@ export type DragonContextProps = {
   fetchDragons: () => void
   fetchDragonById: (id: string) => void
 
-  handleCreateDragon: (value: any) => void
+  handleCreateDragon: (value: CreateDragonType) => void
 
-  handleUpdateDragon: (value: any) => void
+  handleUpdateDragon: (id: string, value: UpdateDragonType) => void
 
   handleDeleteDragon: (id: string) => void
 }

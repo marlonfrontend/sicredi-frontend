@@ -2,6 +2,7 @@
 
 import { Card, Container, DragonForm, Heading } from '@/components'
 import { useDragon } from '@/stores'
+import { CreateDragonTypeSchema } from '@/types'
 
 const Page = () => {
   const { handleCreateDragon } = useDragon()
@@ -10,7 +11,10 @@ const Page = () => {
     <Container>
       <Heading backButton title="Criar dragão" />
       <Card>
-        <DragonForm onSubmit={handleCreateDragon} />
+        <DragonForm
+          schema={CreateDragonTypeSchema}
+          onSubmit={handleCreateDragon}
+        />
       </Card>
     </Container>
   )

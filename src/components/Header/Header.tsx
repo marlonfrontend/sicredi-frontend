@@ -21,7 +21,9 @@ export const Header = () => {
               alt="Sicredi"
             />
           </Link>
-          <Button onClick={signOut}>Sair</Button>
+          <Button color="secondary" onClick={signOut}>
+            Sair
+          </Button>
         </Grid>
       </Container>
     </header>

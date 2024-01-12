@@ -1,18 +1,32 @@
 'use client'
-import { Modal, Grid, Button } from '@/components'
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  Button,
+} from '@/components'
+import { ModalConfirmProps } from './ModalConfirm.types'
 
-export const ModalConfirm = ({ isOpen, onClose, onConfirm, content }: any) => {
+export const ModalConfirm = ({
+  isOpen,
+  maxWidth,
+  onClose,
+  onConfirm,
+  content,
+}: ModalConfirmProps) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <div className="py-5">{content}</div>
-      <Grid align="center" gap={3}>
-        <Button color="secondary" size="sm" onClick={onClose}>
-          Não
+    <Modal isOpen={isOpen} onClose={onClose} maxWidth={maxWidth}>
+      <ModalHeader title="Excluir" />
+      <ModalContent>{content}</ModalContent>
+      <ModalFooter>
+        <Button block size="lg" onClick={onConfirm}>
+          Confirmar
         </Button>
-        <Button size="sm" onClick={onConfirm}>
-          Sim
+        <Button block color="secondary" size="lg" onClick={onClose}>
+          Cancelar
         </Button>
-      </Grid>
+      </ModalFooter>
     </Modal>
   )
 }
