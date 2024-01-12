@@ -9,7 +9,7 @@ import '../globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 const RootLayout = ({ children }: PropsWithChildren) => {
-  const isLogged = cookies().get('token')
+  const isLogged = cookies().get('token')?.value
 
   if (isLogged) {
     return redirect('/dragons')

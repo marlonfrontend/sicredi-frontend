@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react'
 import { ModalProps } from './Modal.types'
-import { ClosedIcon } from '..'
+import { ClosedIcon } from '@/components'
 
 export const Modal = ({
   isOpen,

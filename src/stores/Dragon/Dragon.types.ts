@@ -8,11 +8,11 @@ export type DragonContextProps = {
   fetchDragons: () => void
   fetchDragonById: (id: string) => void
 
-  createDragon: (value: any) => void
+  handleCreateDragon: (value: any) => void
 
-  updateDragon: (value: any) => void
+  handleUpdateDragon: (value: any) => void
 
-  deleteDragon: (value: any) => void
+  handleDeleteDragon: (id: string) => void
 }
 
 export type DragonProviderProps = {}

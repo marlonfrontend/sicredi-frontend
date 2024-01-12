@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 }
 
 const RootLayout = ({ children }: PropsWithChildren) => {
-  const isLogged = cookies().get('token')
+  const isLogged = cookies().get('token')?.value
 
   if (!isLogged) {
     return redirect('/')
