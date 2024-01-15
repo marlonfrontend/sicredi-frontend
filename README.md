@@ -18,8 +18,7 @@ Demo: [Teste Sicredi](https://sicredi-frontend.vercel.app/)
 ## Dependencies
 
 - React Hook Form + Zod
-- TailwindCss
-- Tailwind Variants
+- styled components
 - Framer Motion
 - JS Cookie
 - React Toastify
