@@ -1,5 +1,11 @@
-import { tv } from 'tailwind-variants'
+'use client'
 
-export const CardStyle = tv({
-  base: 'w-full p-6 bg-white rounded-lg',
-})
+import styled from 'styled-components'
+import { CardProps } from './Card.types'
+
+export const CardStyle = styled.div<CardProps>`
+  width: 100%;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 0.375rem;
+`

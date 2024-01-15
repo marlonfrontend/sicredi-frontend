@@ -17,6 +17,7 @@ export const AuthProvider = ({
 
   const signIn: AuthContextProps['signIn'] = (value) => {
     try {
+      console.log('aqui')
       if (value.email === 'teste@sicredi.com' && value.password === '1234') {
         Cookies.set('token', '1234')
         router.push('/dragons')

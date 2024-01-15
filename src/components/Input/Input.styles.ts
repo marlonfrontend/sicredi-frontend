@@ -1,11 +1,40 @@
-import { tv } from 'tailwind-variants'
+'use client'
 
-export const InputStyle = tv({
-  slots: {
-    base: 'w-full relative',
-    label: 'text-sm',
-    input:
-      'w-full px-3 py-2 text-base leading-5 text-gray-700 transition duration-300 ease-in-out transform border rounded-md focus:outline-none focus:shadow-outline-blue focus:border-primary sm:text-sm sm:leading-5',
-    error: 'text-sm text-red-600',
-  },
-})
+import styled from 'styled-components'
+import { InputProps } from './Input.types'
+
+export const InputStyle = styled.div<InputProps>`
+  width: 100%;
+  position: relative;
+
+  & .label {
+    font-size: 0.875rem;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  & .input {
+    width: 100%;
+    padding: 10px 10px;
+    font-size: 15px;
+    color: #111;
+    transition:
+      border 0.3s ease-in-out,
+      transform 0.3s ease-in-out;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    outline: none;
+    &:focus {
+      border-color: var(--clr-primary);
+    }
+    &.sm {
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+  }
+
+  & .error {
+    font-size: 0.875rem;
+    color: #e53e3e;
+  }
+`

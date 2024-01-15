@@ -1,5 +1,9 @@
-import { tv } from 'tailwind-variants'
+'use client'
 
-export const HeaderStyle = tv({
-  base: 'bg-white shadow py-5 h-[80px]',
-})
+import styled from 'styled-components'
+
+export const HeaderStyle = styled.header`
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  height: 80px;
+`

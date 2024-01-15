@@ -4,8 +4,6 @@ import { PropsWithChildren, useState } from 'react'
 import { DropdownProps } from './Dropdown.types'
 import { DropdownStyle } from './Dropdown.styles'
 
-const { base, content, item } = DropdownStyle()
-
 export const Dropdown = ({
   children,
   trigger,
@@ -15,21 +13,21 @@ export const Dropdown = ({
   const toggleDropdown = () => setIsOpen(!isOpen)
 
   return (
-    <div className={base()}>
+    <DropdownStyle>
       <div onClick={toggleDropdown}>{trigger}</div>
 
       {isOpen && <>{children}</>}
-    </div>
+    </DropdownStyle>
   )
 }
 
 export const DropdownContent = ({ children }: PropsWithChildren) => {
-  return <div className={content()}>{children}</div>
+  return <div className="dropdown-content">{children}</div>
 }
 
 export const DropdownItem = ({ onClick, children }: PropsWithChildren<any>) => {
   return (
-    <button onClick={onClick} className={item()}>
+    <button onClick={onClick} className="dropdown-item">
       {children}
     </button>
   )
