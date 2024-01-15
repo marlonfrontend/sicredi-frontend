@@ -4,8 +4,9 @@ import { DefaultLayout } from '@/layouts'
 import { Inter } from 'next/font/google'
 import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
+import StyledComponentsRegistry from '@/lib/registry'
 
-import '../globals.css'
+import '../globals.scss'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,7 +23,9 @@ const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body className={inter.className}>
-        <DefaultLayout>{children}</DefaultLayout>
+        <StyledComponentsRegistry>
+          <DefaultLayout>{children}</DefaultLayout>
+        </StyledComponentsRegistry>
       </body>
     </html>
   )

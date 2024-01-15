@@ -24,7 +24,7 @@ export const AuthLayout = ({ children }: PropsWithChildren) => {
               },
             },
           }}
-          className="flex h-screen flex-col items-center justify-center"
+          className="auth-layout"
         >
           {children}
         </motion.main>

@@ -33,7 +33,7 @@ export const DefaultLayout = ({ children }: PropsWithChildren) => {
                   },
                 },
               }}
-              className="py-10"
+              className="default-layout"
             >
               {children}
             </motion.main>

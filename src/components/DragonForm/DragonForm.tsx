@@ -27,10 +27,10 @@ export const DragonForm = <T extends DragonsType>({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialValues])
 
-  const { base, actionForm } = DragonFormStyle()
+  // const { base, actionForm } = DragonFormStyle()
 
   return (
-    <form className={base()} onSubmit={handleSubmit(onSubmit)}>
+    <DragonFormStyle onSubmit={handleSubmit(onSubmit)}>
       <Grid gap={5}>
         <GridItem col={12} md={6}>
           <Input
@@ -54,11 +54,11 @@ export const DragonForm = <T extends DragonsType>({
           />
         </GridItem>
       </Grid>
-      <div className={actionForm()}>
+      <div className="action-form">
         <Button type="submit" size="lg">
           Salvar
         </Button>
       </div>
-    </form>
+    </DragonFormStyle>
   )
 }

@@ -9,9 +9,9 @@ export const Header = () => {
   const { signOut } = useAuth()
 
   return (
-    <header className={HeaderStyle()}>
+    <HeaderStyle>
       <Container>
-        <Grid justify="between" align="center">
+        <Grid justify="space-between" align="center">
           <Link href="/">
             <Image
               src="/img/logo.svg"
@@ -26,6 +26,6 @@ export const Header = () => {
           </Button>
         </Grid>
       </Container>
-    </header>
+    </HeaderStyle>
   )
 }

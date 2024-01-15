@@ -19,7 +19,7 @@ export const AuthForm = () => {
 
   return (
     <Card maxWidth={380}>
-      <form className={AuthFormStyle()} onSubmit={handleSubmit(signIn)}>
+      <AuthFormStyle onSubmit={handleSubmit(signIn)}>
         <Input
           label="E-mail"
           type="email"
@@ -35,7 +35,7 @@ export const AuthForm = () => {
         <Button block type="submit">
           Enviar
         </Button>
-      </form>
+      </AuthFormStyle>
     </Card>
   )
 }

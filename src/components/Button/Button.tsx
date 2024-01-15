@@ -6,11 +6,21 @@ export const Button = ({
   type = 'button',
   children,
   onClick,
+  size = 'lg',
+  block = false,
+  color = 'primary',
   ...props
 }: PropsWithChildren<ButtonProps>) => {
   return (
-    <button onClick={onClick} type={type} className={ButtonStyle({ ...props })}>
+    <ButtonStyle
+      onClick={onClick}
+      type={type}
+      $size={size}
+      $block={block}
+      $color={color}
+      {...props}
+    >
       {children}
-    </button>
+    </ButtonStyle>
   )
 }

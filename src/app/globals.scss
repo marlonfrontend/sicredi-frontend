@@ -1,0 +1,33 @@
+:root {
+  --clr-primary: #33820d;
+  --clr-secondary: #999999;
+  --clr-bg: #f3f4f6;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: var(--clr-bg);
+}
+
+.auth-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.default-layout {
+  padding: 30px 0;
+}

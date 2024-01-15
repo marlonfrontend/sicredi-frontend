@@ -4,7 +4,7 @@ import { PropsWithChildren } from 'react'
 import { ModalProps } from './Modal.types'
 import { ClosedIcon } from '@/components'
 import { motion } from 'framer-motion'
-import { ModalStyle } from './Modal.styles'
+import { ModalContentStyle, ModalFooterStyle, ModalHeaderStyle, ModalStyle } from './Modal.styles'
 
 export const Modal = ({
   isOpen,
@@ -12,15 +12,14 @@ export const Modal = ({
   children,
   maxWidth,
 }: PropsWithChildren<ModalProps>) => {
-  const { base, overlay, wrapper, closeButton } = ModalStyle()
 
   if (!isOpen) {
     return null
   }
   return (
-    <div className={base()}>
-      <div className={wrapper()} style={{ maxWidth: `${maxWidth}px` }}>
-        <button className={closeButton()} onClick={onClose}>
+    <ModalStyle>
+      <div className='wrapper' style={{ maxWidth: `${maxWidth}px` }}>
+        <button className='close-button' onClick={onClose}>
           <ClosedIcon width={22} />
         </button>
         {children}
@@ -37,25 +36,25 @@ export const Modal = ({
             },
           },
         }}
-        className={overlay()}
+        className='overlay'
         onClick={onClose}
       />
-    </div>
+    </ModalStyle>
   )
 }
 
 export const ModalHeader = ({ title }: PropsWithChildren<any>) => {
   return (
-    <div className="px-5 py-3">
-      <h4 className="font-semibold">{title}</h4>
-    </div>
+    <ModalHeaderStyle>
+      <div className='title'>{title}</div>
+    </ModalHeaderStyle>
   )
 }
 
 export const ModalContent = ({ children }: PropsWithChildren) => {
-  return <div className="p-5">{children}</div>
+  return <ModalContentStyle>{children}</ModalContentStyle>
 }
 
 export const ModalFooter = ({ children }: PropsWithChildren) => {
-  return <div className="flex gap-4 border-t p-4">{children}</div>
+  return <ModalFooterStyle>{children}</ModalFooterStyle>
 }

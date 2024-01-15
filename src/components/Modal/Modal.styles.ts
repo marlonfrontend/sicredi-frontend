@@ -1,11 +1,72 @@
-import { tv } from 'tailwind-variants'
+import styled from 'styled-components';
 
-export const ModalStyle = tv({
-  slots: {
-    base: 'fixed inset-0 z-50 flex items-center justify-center',
-    overlay: 'absolute inset-0 bg-black/30 backdrop-blur-sm',
-    wrapper: 'w-full relative z-50 rounded-md bg-white',
-    closeButton:
-      'absolute right-2 top-2 rounded-full bg-gray-50 p-1 text-gray-500 hover:text-gray-700 focus:outline-none',
-  },
-})
+export const ModalStyle = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & .overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+  }
+
+  & .wrapper {
+    width: 100%;
+    position: relative;
+    z-index: 50;
+    border-radius: 0.375rem;
+    background-color: #ffffff;
+  }
+
+  & .close-button {
+    position: absolute;
+    top: 15px;
+    right: 0px;
+    background-color: transparent;
+    border-radius: 9999px;
+    border: 1px solid #d2d6dc;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    width: 30px;
+    align-items: center;
+    margin-right: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      border-color: var(--clr-primary);
+      color: var(--clr-primary);
+    }
+  }
+`;
+
+export const ModalHeaderStyle = styled.div`
+  border-bottom: 1px solid #eee;
+  display: flex;
+  padding: 20px 20px;
+  & .title {
+    font-weight: 600;
+  }
+`
+export const ModalContentStyle = styled.div`
+  padding: 20px;
+`
+
+export const ModalFooterStyle = styled.div`
+  border-top: 1px solid #eee;
+  padding: 15px 20px;
+  display: flex;
+  gap: 20px;
+`

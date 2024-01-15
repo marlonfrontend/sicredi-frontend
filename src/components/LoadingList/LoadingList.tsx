@@ -7,10 +7,7 @@ export const LoadingList = () => {
   return (
     <Grid direction="column" gap={5}>
       {Array.from({ length: 5 }).map(() => (
-        <div
-          className={LoadingListStyle()}
-          key={Math.random().toString()}
-        ></div>
+        <LoadingListStyle key={Math.random().toString()}></LoadingListStyle>
       ))}
     </Grid>
   )

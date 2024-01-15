@@ -14,6 +14,7 @@ import { DragonCardProps } from './DragonCard.types'
 import { formatDate } from '@/utils/formatters'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { DragonCardItemStyle, DropdownTriggerStyle } from './DragonCard.styles'
 
 export const DragonCard = ({
   id,
@@ -40,26 +41,32 @@ export const DragonCard = ({
 
   return (
     <Card>
-      <Grid justify="between" align="center">
+      <Grid justify="space-between" align="center">
         <GridItem col={3}>
-          <small className="uppercase text-black/40">Nome</small>
-          <div>{name}</div>
+          <DragonCardItemStyle>
+            <small>Nome</small>
+            <div>{name}</div>
+          </DragonCardItemStyle>
         </GridItem>
         <GridItem col={3}>
-          <small className="uppercase text-black/40">Tipo</small>
-          <div>{type}</div>
+          <DragonCardItemStyle>
+            <small>Tipo</small>
+            <div>{type}</div>
+          </DragonCardItemStyle>
         </GridItem>
         <GridItem col={3}>
-          <small className="uppercase text-black/40">Criado em</small>
-          <div>
-            {createdAt ? <>{formatDate(createdAt)}</> : <>Não informado</>}
-          </div>
+          <DragonCardItemStyle>
+            <small>Criado em</small>
+            <div>
+              {createdAt ? <>{formatDate(createdAt)}</> : <>Não informado</>}
+            </div>
+          </DragonCardItemStyle>
         </GridItem>
         <Dropdown
           trigger={
-            <button className="rounded-full border p-2">
+            <DropdownTriggerStyle>
               <MoreVerticalIcon />
-            </button>
+            </DropdownTriggerStyle>
           }
         >
           <DropdownContent>
